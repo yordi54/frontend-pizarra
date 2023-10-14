@@ -29,7 +29,7 @@ export class UserController {
     return this.userService.findAll({
       page,
       limit,
-      route: 'http://localhost:5000/api/users',
+      route: 'https://backend-pizarra.azurewebsites.net/api/users',
     });
   }
 
