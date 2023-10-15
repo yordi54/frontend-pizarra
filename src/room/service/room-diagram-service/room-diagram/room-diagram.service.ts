@@ -14,9 +14,24 @@ export class RoomDiagramService {
     roomEntityId: number,
     diagram: string,
   ): Promise<RoomDiagramI> {
+    //verificar si existe ya un diagrama para esa sala
+    const roomDiagramExists = await this.roomDiagramExistsByRoomEntityId(roomEntityId);
+    if(roomDiagramExists){
+      //si existe, actualizar
+      return await this.updateRoomDiagram(roomEntityId, diagram);        
+    }
     return await this.roomDiagramRepository.save({ roomEntityId, diagram });
   }
 
+  async updateRoomDiagram(
+    roomEntityId: number,
+    diagram: string,
+  ): Promise<RoomDiagramI> {
+    const roomDiagram = await this.findRoomDiagramByRoomEntityId(roomEntityId);
+    roomDiagram.diagram = diagram;
+    return await this.roomDiagramRepository.save(roomDiagram);
+  }
+  
   async findRoomDiagramByRoomEntityId(
     roomEntityId: number,
   ): Promise<RoomDiagramI> {
