@@ -15,7 +15,7 @@ export class RoomController {
   }
   //parametro por get para buscar el diagrama de una sala
   @Get('find-by-room-id/:roomEntityId')
-  async findRoomDiagramByRoomEntityId(@Param() roomEntityId: number) {
+  async findRoomDiagramByRoomEntityId(@Param('roomEntityId') roomEntityId: number) {
     return await this.RoomDiagramService.findRoomDiagramByRoomEntityId(roomEntityId);
   }
   
