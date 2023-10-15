@@ -14,7 +14,7 @@ export class RoomDiagramService {
     roomEntityId: number,
     diagram: string,
   ): Promise<RoomDiagramI> {
-    return this.roomDiagramRepository.save({ roomEntityId, diagram });
+    return await this.roomDiagramRepository.save({ roomEntityId, diagram });
   }
 
   async findRoomDiagramByRoomEntityId(

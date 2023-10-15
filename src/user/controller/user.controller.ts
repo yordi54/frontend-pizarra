@@ -6,15 +6,12 @@ import { LoginResponseI } from '../model/login-response.interface';
 import { UserI } from '../model/user.interface';
 import { UserHelperService } from '../service/user-helper/user-helper.service';
 import { UserService } from '../service/user-service/user.service';
-import { RoomDiagramService } from '../../room/service/room-diagram-service/room-diagram/room-diagram.service';
-import { DiagramRoomDto } from '../model/dto/diagram-room.dto';
 
 @Controller('users')
 export class UserController {
   constructor(
     private userService: UserService,
     private userHelperService: UserHelperService,
-    private RoomDiagramService: RoomDiagramService,
   ) {}
 
   @Post()
@@ -59,9 +56,6 @@ export class UserController {
   }
 
   ///save diagram
-  @Post('save-diagram')
-  async saveDiagram(@Body() diagram: DiagramRoomDto): Promise<any> {
-    return this.RoomDiagramService.saveRoomDiagram(diagram.roomEntityId, diagram.diagram);
-  }
+  
   
 }
