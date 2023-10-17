@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { RoomDiagramEntity } from 'src/room/model/room-diagram.entity';
 import { RoomDiagramI } from 'src/room/model/room-diagram.interface';
 import { Repository } from 'typeorm';
+import { DiagramRoomDto } from '../../../model/dto/diagram-room.dto';
 
 @Injectable()
 export class RoomDiagramService {
@@ -11,9 +12,11 @@ export class RoomDiagramService {
     private readonly roomDiagramRepository: Repository<RoomDiagramEntity>,
   ) {}
   async saveRoomDiagram(
-    roomEntityId: number,
-    diagram: string,
+    diagramRoomDto: DiagramRoomDto,
   ): Promise<RoomDiagramI> {
+    const {roomEntityId, diagram1, diagram2, diagram3} = diagramRoomDto;
+    const diagram = diagram1 + diagram2 + diagram3;
+    console.log(diagram);
     //verificar si existe ya un diagrama para esa sala
     const roomDiagramExists = await this.roomDiagramExistsByRoomEntityId(roomEntityId);
     if(roomDiagramExists){

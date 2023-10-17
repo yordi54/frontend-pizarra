@@ -11,7 +11,7 @@ export class RoomController {
   //save
   @Post('save-diagram')
   async saveRoomDiagram(@Body() diagramRoomDto: DiagramRoomDto) {
-    return await this.RoomDiagramService.saveRoomDiagram(diagramRoomDto.roomEntityId, diagramRoomDto.diagram);
+    return await this.RoomDiagramService.saveRoomDiagram(diagramRoomDto);
   }
   //parametro por get para buscar el diagrama de una sala
   @Get('find-by-room-id/:roomEntityId')

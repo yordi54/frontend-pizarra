@@ -6,5 +6,11 @@ export class DiagramRoomDto {
     roomEntityId: number;
     @IsString()
     @IsNotEmpty()
-    diagram: string;
+    diagram1: string;
+    @IsString()
+    @IsNotEmpty()
+    diagram2: string;
+    @IsString()
+    @IsNotEmpty()
+    diagram3: string;
 }
