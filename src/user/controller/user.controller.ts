@@ -29,7 +29,7 @@ export class UserController {
     return this.userService.findAll({
       page,
       limit,
-      route: 'https://backend-pirzarra.onrender.com/api/users',
+      route: 'https://backend-pirzarra-rjb1.onrender.com/api/users',
     });
   }
 
